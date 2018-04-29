@@ -13,9 +13,26 @@ body {
 .post {
     margin-bottom: 70px;
     font-size: 120%;
+    text-align: center;
 }
 
 a.menu:any-link {
     text-decoration-line: none;
     color: #000000;
+}
+
+.start-button {
+    width:150px;
+    background-color: #202020;
+    color: orange;
+    border: none;
+    font-size: 120%;
+    font-weight: 700;
+    padding: 15px 0;
+    cursor: pointer;
+    border-radius:10px 10px 10px 10px;
+}
+
+.start-button:hover {
+    text-decoration: underline;
 }
