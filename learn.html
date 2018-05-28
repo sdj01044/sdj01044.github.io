@@ -4,15 +4,21 @@
     <title>ASCM</title> 
     <meta charset="utf-8"> 
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script>
+            function plz_login(){
+                alert("로그인이 필요합니다.")
+                location.href="login.html"
+            }
+        </script>
 </head>
 <body>
     <div style="padding-right: 70px;">
         <div style="padding-left:30px; float:left;"><a class="menu" style=" font-size: 200%;" href="index.html"><b>ASCM</b></a></div>
-        <div style="float:right;"><a class="menu" href="">로그인</a> | <a class="menu" href="">회원가입</a></div>
+        <div style="float:right;"><a class="menu" href="login.html">로그인</a> | <a class="menu" href="">회원가입</a></div>
     </div><br><br>
     <div style="padding-left: 180px; color:gray;">
         <a class="upper-menu" href="introduction.html">Introduction</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <a class="upper-menu" href="mylist.html">My List</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a class="upper-menu" onclick="plz_login()">My List</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <a class="upper-menu" href="learn.html">Learn</a>
     </div>
     <hr size=1 width=100%>
@@ -20,13 +26,14 @@
     <div class="post">
             <h1 style="text-decoration-line: underline">Let's learn Algorithm !</h1>
         <table align="center" style="border-spacing: 30px; font-weight: 600;"><tr>
-            <td><a class="learn-menu" href="https://www.swexpertacademy.com/main/learn/course/courseList.do" target="learn_frame">SW Expert Academy</a><td></td><td>|</td><td></td>
-            <td><a class="learn-menu" href="https://tacademy.sktechx.com/live/player/onlineLectureDetail.action?seq=83" target="learn_frame">T아카데미-초급</a><td></td><td>|</td><td></td>
+            <td><a class="learn-menu" href="https://www.swexpertacademy.com/main/learn/course/courseList.do" target="learn_frame">SW Expert Academy</a></td>
+                <td></td><td>|</td><td></td>
+            <td><a class="learn-menu" href="https://tacademy.sktechx.com/live/player/onlineLectureDetail.action?seq=83" target="learn_frame">T아카데미-초급</a></td>
+                <td></td><td>|</td><td></td>
             <td><a class="learn-menu" href="https://tacademy.sktechx.com/live/player/onlineLectureDetail.action?seq=104" target="learn_frame">T아카데미-중급</a></td>
         </tr></table>
         <iframe name="learn_frame" width=100% height="760">
             </iframe>
     </div>
-    
 <body>
 </html>

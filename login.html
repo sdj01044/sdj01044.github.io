@@ -5,10 +5,31 @@
     <meta charset="utf-8"> 
     <link rel="stylesheet" href="style.css" type="text/css">
     <script>
-        function plz_login(){
-            alert("로그인이 필요합니다.")
-            location.href="login.html"
-        }
+            function plz_login(){
+                alert("로그인이 필요합니다.")
+                location.href="login.html"
+            }
+
+            function idpwChk(){
+                txtId = document.frm1.id.value
+                txtPw=document.frm1.pw.value
+                if(txtId=='dongjo'){
+                    if(txtPw==1234)
+                        location.href="mylist.html"
+                    else
+                        alert("비밀번호가 틀렸습니다.")
+                }
+                else
+                    alert("아이디가 틀렸습니다.")
+            } 
+            
+            function inputChk(){
+                txtPw=isNaN(document.frm1.pw.value)
+                if(txtPw==true){
+                    document.frm1.pw.value=""
+                    alert("숫자만 입력하세요!")
+                }
+            }
     </script>
 </head>
 <body>
@@ -29,34 +50,17 @@
             <font style="color:orange">M</font>anager</h1>
     </div><br>
 
-    <div align="center">
-        <img src="images/main_logo.png" width="70%" height="300">
-    </div><br><br>
-
     <div class="post" style="text-align: center">
         <h1 style="font-family:fantasy;">Let's Manage Your Source Code&nbsp&nbsp&nbsp&nbsp&nbsp</h1>
         <hr size=3 noshade width=300px>
         <p>Online Judge에서 푼 문제들을 쉽게 관리하세요!</p><br><br>
-        <table>
-            <tr style="text-align: center;">
-                <td><img src="images/algorithm.png" width="40%"></td>
-                <td><img src="images/arrow.png" width="20%"></td>
-                <td><img src="images/source_code.png" width="40%"></td>
-                <td><img src="images/arrow.png" width="20%"></td>
-                <td><img src="images/manage.png" width="40%"></td>
-            </tr>
-        </table><br>
-        <p>Algorithm 문제를 풀고, 문제와 함께 작성한 Code를 Upload하세요.</p>
-        <p>문제와 함께 Code를 관리하여 학습이 쉬워집니다!</p><br><br>
-        <button class="start-button" onclick="location.href='introduction.html'">Start !</button>
-    </div>
-
-    <div>
-        <table style="width:100%; padding:20px; color:white; background-color: #202020;">
-            <tr><td>Seo Dong Jo</td></tr><tr></tr>
-            <tr><td>Kwanwoon Unversity</td></tr><tr></tr>
-            <tr><td>sdj01044@naver.com</td></tr>
-        </table>
+    
+        <center><form name=frm1>
+            아이디 : <input type="text" size=12 name=id>&nbsp;&nbsp;&nbsp;&nbsp;
+            비밀번호 : <input type="password" size=12 name=pw onkeydown="inputChk()">
+            <input class="small-button" type="button" value="Login" onclick="idpwChk()">
+            <p>[임시 회원]<br>ID : dongjo<br>PW : 1234 </p>
+        </form></center>
     </div>
 </body>
 </html>
