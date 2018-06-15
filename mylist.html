@@ -6,28 +6,19 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script>
-        var num = 0
-        var title, link, code;
+        var num = 0;
+        var title = [];
+        var code = [];
+        var link = [];
 
-        var getParameters = function (paramName){
-            var url = location.href;
-            var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
-            for (var i = 0; i < parameters.length; i++) {
-                var varName = parameters[i].split('=')[0];
-                if (varName.toUpperCase() == paramName.toUpperCase()) {
-                    returnValue = parameters[i].split('=')[1];
-                    return decodeURIComponent(returnValue);
-                }
-            }
-        };
+        function add_item(){
+            jQuery('<tr><td>'+num+'</td><td><input type="button" id="code" value="'+title[num-1] + '" onclick=show_code()>'
+                +'</td><td><a target=_blank href='+link[num-1]+'>'
+                +title[num-1]+'_link</a></td></tr>').appendTo('#board');
+        }
 
-        var result = getParameters('result');
-        if(result == 'true'){
-            alert('List 추가가 완료되었습니다.');
-            num = getParameters('num');
-            title = getParameters('title');
-            link = getParameters('link');
-            code = getParameters('code');
+        function show_code(){
+            winObj = window.open("code.html", "show_code", "width=500, height=500, left=100, top=50");
         }
 
         $(document).ready(function(){
@@ -37,7 +28,7 @@
             });
 
             $('#id').on('click', function(){
-                window.location.href = "addlist.html?num=" + num;
+                window.open("addlist.html", "add_list", "width=800, height=1000, left=100, top=20");
             });
         });
     </script>
@@ -61,22 +52,15 @@
     </div><br>
 
     <h1 style="text-decoration-line: underline">My List</h1>
-    <input id="id" class="small-button" type="button" value="ADD"></form>
+    <input id="id" class="small-button" type="button" value="ADD">
     <center><font size=4 face="맑은고딕">
-        <table style="width:80%; text-align:center; 
+        <table id="board" style="width:80%; text-align:center; 
                 border:2px solid black;padding:5px; border-spacing:5px">
             <tr style="color: orange; background-color: #202020;">
                 <th> 번호 </th>
                 <th> 코드 보기 </th>
                 <th> 문제 보기 </th>
             </tr><tr><td>&nbsp</td></tr>
-            <script>
-                for(i=0; i<num; i++){
-                    document.write("<td>" + num + "</td>");
-                    document.write("<td><a>" + title + "</a></td>");
-                    document.write("<td><a target='_blank' href=" + link + ">#" + title + "</a></td>");
-                }
-            </script>
     </table></font></center>
 
 
