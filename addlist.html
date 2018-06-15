@@ -4,6 +4,7 @@
     <title>ASCM</title> 
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script>
         var getParameters = function (paramName){
             var url = location.href;
@@ -19,27 +20,33 @@
 
         var num = eval(getParameters('num'));
 
-        // 제출 버튼 눌렀을 때
-        function click_submit(){
-            var textArea = document.getElementById('code');
-            if(textArea.value=='')
-                alert('코드를 입력하세요!');
-            else{
-                num = num + 1;
-                var link = document.getElementById('t_link');
-                var title = document.getElementById('t_title');
-                result = confirm("링크 : " + link.value + "\n\n코드\n" + textArea.value);
-                if(result==true){
-                    window.location.href = "mylist.html?result=" + true + "&title=" + title.value
-                        + "&num=" + num + "&link=" + link.value + "&code=" + textArea.value;
-                }
-            }
-        }
-
         function click_check(path){
             var openCheck = window.open("about:blank");
             openCheck.location.href = path;
         }
+
+        $(document).ready(function(){
+            $('#MyList').on('click', function(){
+                alert("로그인이 필요합니다.");
+                location.href="login.html";
+            });
+
+            $('#submit').on("click", function(){
+                var textArea = document.getElementById('code');
+                if(textArea.value=='')
+                    alert('코드를 입력하세요!');
+                else{
+                    num = num + 1;
+                    var link = document.getElementById('t_link');
+                    var title = document.getElementById('t_title');
+                    result = confirm("링크 : " + link.value + "\n\n코드\n" + textArea.value);
+                    if(result==true){
+                        window.location.href = "mylist.html?result=" + true + "&title=" + title.value
+                            + "&num=" + num + "&link=" + link.value + "&code=" + textArea.value;
+                    }
+                }
+            });
+        });
     </script>
 </head>
 <body>
@@ -49,7 +56,7 @@
     </div><br><br>
     <div style="padding-left: 180px; color:gray;">
         <a class="upper-menu" href="introduction.html">Introduction</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <a class="upper-menu" href="mylist.html">My List</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a class="upper-menu" id="MyList">My List</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <a class="upper-menu" href="learn.html">Learn</a>
     </div>
     <hr size=1 width=100%><br>
@@ -63,7 +70,7 @@
         
         <h1><font>- Code</font></h1>
         <form><textarea id="code" cols="100" rows="50"></textarea>
-        <input class="small-button" type="button" value="제출" onclick="click_submit()"></form>    
+        <input id="submit" class="small-button" type="button" value="제출"></form>    
     </div>
 <body>
 </html>

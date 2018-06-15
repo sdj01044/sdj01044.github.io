@@ -4,32 +4,35 @@
     <title>ASCM</title>
     <meta charset="utf-8"> 
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script>
-            function plz_login(){
-                alert("로그인이 필요합니다.")
-                location.href="login.html"
-            }
+        $(document).ready(function(){
+            $('#MyList').on('click', function(){
+                alert("로그인이 필요합니다.");
+                location.href="login.html";
+            });
 
-            function idpwChk(){
-                txtId = document.frm1.id.value
-                txtPw=document.frm1.pw.value
+            $('#pw').on("keydown", function(){
+                txtPw=isNaN(document.frm1.pw.value);
+                if(txtPw==true){
+                    document.frm1.pw.value="";
+                    alert("숫자만 입력하세요!");
+                }
+            });
+
+            $('#login').on("click", function(){
+                txtId = document.frm1.id.value;
+                txtPw=document.frm1.pw.value;
                 if(txtId=='dongjo'){
                     if(txtPw==1234)
-                        location.href="mylist.html"
+                        location.href="mylist.html";
                     else
-                        alert("비밀번호가 틀렸습니다.")
+                        alert("비밀번호가 틀렸습니다.");
                 }
                 else
-                    alert("아이디가 틀렸습니다.")
-            } 
-            
-            function inputChk(){
-                txtPw=isNaN(document.frm1.pw.value)
-                if(txtPw==true){
-                    document.frm1.pw.value=""
-                    alert("숫자만 입력하세요!")
-                }
-            }
+                    alert("아이디가 틀렸습니다.");
+            });
+        });
     </script>
 </head>
 <body>
@@ -39,7 +42,7 @@
     </div><br><br>
     <div style="padding-left: 180px; color:gray;">
             <a class="upper-menu" href="introduction.html">Introduction</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <a class="upper-menu" onclick="plz_login()">My List</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a class="upper-menu" id="MyList">My List</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <a class="upper-menu" href="learn.html">Learn</a>
     </div>
     <hr size=1 width=100%>
@@ -57,8 +60,8 @@
     
         <center><form name=frm1>
             아이디 : <input type="text" size=12 name=id>&nbsp;&nbsp;&nbsp;&nbsp;
-            비밀번호 : <input type="password" size=12 name=pw onkeydown="inputChk()">
-            <input class="small-button" type="button" value="Login" onclick="idpwChk()">
+            비밀번호 : <input id="pw" type="password" size=12 name=pw>
+            <input id="login" class="small-button" type="button" value="Login">
             <p>[임시 회원]<br>ID : dongjo<br>PW : 1234 </p>
         </form></center>
     </div>

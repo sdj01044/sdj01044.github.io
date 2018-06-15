@@ -4,11 +4,52 @@
     <title>ASCM</title>
     <meta charset="utf-8"> 
     <link rel="stylesheet" href="style.css" type="text/css">
-    <script>
-        function plz_login(){
-            alert("로그인이 필요합니다.")
-            location.href="login.html"
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+    <script src="controller.js"></script>
+    
+    <style>
+        .slide{
+            width: 1000px;
+            overflow: hidden;
+            margin:0 auto;
+            position: relative;
         }
+        .slide ul{
+            width: 5000px;
+            list-style: none;
+            font-size: 0;
+        }
+        .slide ul li{
+            display: inline-block;
+        }
+        .slide img{
+            display: block;
+            border: 0;
+        }
+        .slide button{
+            border: 0;
+            background: none;
+            top: 170px;
+        }
+        .slide button.prev{
+            position: absolute;
+            left: 20px;
+        }
+        .slide button.next{
+            position: absolute;
+            right: 0;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            $('#MyList').on('click', function(){
+                alert("로그인이 필요합니다.");
+                location.href="login.html";
+            });
+        });
     </script>
 </head>
 <body>
@@ -18,7 +59,7 @@
     </div><br><br>
     <div style="padding-left: 180px; color:gray;">
             <a class="upper-menu" href="introduction.html">Introduction</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <a class="upper-menu" onclick="plz_login()">My List</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a class="upper-menu" id="MyList">My List</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <a class="upper-menu" href="learn.html">Learn</a>
     </div>
     <hr size=1 width=100%>
@@ -29,9 +70,17 @@
             <font style="color:orange">M</font>anager</h1>
     </div><br>
 
-    <div align="center">
-        <img src="images/main_logo.png" width="70%" height="300">
-    </div><br><br>
+    <div class="slide">
+        <button class="prev" type="button"><img src="images/prev.png" alt=""/></button>
+        <ul>
+            <li><img src="images/main_logo.png" alt="" /></li>
+            <li><img src="images/award.jpg" alt="" /></li>
+            <li><img src="images/scpc.jpg" alt="" /></li>
+            <li><img src="images/edu.jpg" alt="" /></li>
+            <li><img src="images/python.jpg" alt="" /></li>
+        </ul>
+        <button class="next" type="button"><img src="images/next.png" alt=""/></button>
+    </div>
 
     <div class="post" style="text-align: center">
         <h1 style="font-family:fantasy;">Let's Manage Your Source Code&nbsp&nbsp&nbsp&nbsp&nbsp</h1>

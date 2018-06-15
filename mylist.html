@@ -4,6 +4,7 @@
     <title>ASCM</title>
     <meta charset="utf-8"> 
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script>
         var num = 0
         var title, link, code;
@@ -20,10 +21,6 @@
             }
         };
 
-        function click_add(){
-            window.location.href = "addlist.html?num=" + num;
-        }
-
         var result = getParameters('result');
         if(result == 'true'){
             alert('List 추가가 완료되었습니다.');
@@ -32,6 +29,17 @@
             link = getParameters('link');
             code = getParameters('code');
         }
+
+        $(document).ready(function(){
+            $('#MyList').on('click', function(){
+                alert("로그인이 필요합니다.");
+                location.href="login.html";
+            });
+
+            $('#id').on('click', function(){
+                window.location.href = "addlist.html?num=" + num;
+            });
+        });
     </script>
 </head>
 <body>
@@ -41,7 +49,7 @@
     </div><br><br>
     <div style="padding-left: 180px; color:gray;">
             <a class="upper-menu" href="introduction.html">Introduction</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <a class="upper-menu" href="mylist.html">My List</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a class="upper-menu" id="MyList">My List</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <a class="upper-menu" href="learn.html">Learn</a>
     </div>
     <hr size=1 width=100%>
@@ -53,7 +61,7 @@
     </div><br>
 
     <h1 style="text-decoration-line: underline">My List</h1>
-    <input class="small-button" type="button" value="ADD" onclick="click_add()"></form>
+    <input id="id" class="small-button" type="button" value="ADD"></form>
     <center><font size=4 face="맑은고딕">
         <table style="width:80%; text-align:center; 
                 border:2px solid black;padding:5px; border-spacing:5px">
