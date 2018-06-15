@@ -10,15 +10,11 @@
         var title = [];
         var code = [];
         var link = [];
-
+        
         function add_item(){
-            jQuery('<tr><td>'+num+'</td><td><input type="button" id="code" value="'+title[num-1] + '" onclick=show_code()>'
-                +'</td><td><a target=_blank href='+link[num-1]+'>'
+            jQuery('<tr><td>'+num+'</td><td><textarea cols=30 rows=10>'+code[num-1]
+                +'</textarea></td><td><a target=_blank href='+link[num-1]+'>'
                 +title[num-1]+'_link</a></td></tr>').appendTo('#board');
-        }
-
-        function show_code(){
-            winObj = window.open("code.html", "show_code", "width=500, height=500, left=100, top=50");
         }
 
         $(document).ready(function(){
